@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 
 function ProductGenerator() {
     const [products, setProducts] = useState()
@@ -11,7 +12,7 @@ function ProductGenerator() {
                 console.error(error.message)
             })
     }, [])
-console.log(products)
+
     return (
         <div className='flex justify-evenly flex-wrap bg-slate-300'>
             {
@@ -27,4 +28,14 @@ console.log(products)
     )
 }
 
-export default ProductGenerator
+// it is a function which return an object that hvae these fucnction
+const mapStateToProps = ({ isloding, products, error }) => ({
+    isloding,
+    products,
+    error,
+})
+
+export default connect(
+    mapStateToProps,
+    null
+)(ProductGenerator)
