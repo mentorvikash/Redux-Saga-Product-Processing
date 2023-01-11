@@ -2,6 +2,7 @@ import {createStore, applyMiddleware, compose} from 'redux'
 import rootReducer from '../reducers.js'
 import createSagaMiddleware from 'redux-saga' 
 import {rootSaga, loginWacherSaga} from '../saga/index.js'
+import { PRODUCT } from '../constants/index.js'
 
 
 const configureStore = () => {
@@ -17,9 +18,10 @@ const configureStore = () => {
     sagaMiddleware.run(loginWacherSaga)
     // the action action that we dispatch from here should in order yield then only root saga get executed
     // LOGIN > ADD_CART > BUY > LOGOUT ? If order was not right then then saga action not get trigger
-    store.dispatch({type: 'LOGIN'})
-    store.dispatch({type: 'LOGOUT'})    
-    store.dispatch({type: 'HELLO'})
+    // store.dispatch({type: 'LOGIN'})
+    // store.dispatch({type: 'LOGOUT'})    
+    // store.dispatch({type: 'HELLO'})
+    store.dispatch({type: PRODUCT.LOAD})
     return store;
 }
 

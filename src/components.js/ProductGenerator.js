@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import {productLoad} from '../actions'
 
-function ProductGenerator() {
+function ProductGenerator(props) {
     const [products, setProducts] = useState()
 
     useEffect(() => {
@@ -23,19 +24,26 @@ function ProductGenerator() {
                         <p >{product.description.slice(0,60)}</p>
                     </div>
                 ))
+                
             }
+            <button onClick={props.loadProduct} >Load More Product</button>
         </div>
     )
 }
 
-// it is a function which return an object that hvae these fucnction
+// it is a function which return an object that have these fucnction
 const mapStateToProps = ({ isloding, products, error }) => ({
     isloding,
     products,
     error,
 })
 
+
+const mapDispatchToProps = dispatch => ({
+    loadProduct: () => dispatch(productLoad()),
+})
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps,
 )(ProductGenerator)

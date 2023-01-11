@@ -1,18 +1,31 @@
 import {takeEvery, put, take, call } from 'redux-saga/effects'
+import { PRODUCT } from '../constants';
 
 // --- this is our wacher saga
-function* rootSaga(){
-  yield takeEvery({type: 'HELLO', workerSaga});
-}
-
+// function* rootSaga(){
+//   yield takeEvery({type: 'HELLO', workerSaga});
+// }
 // --- this is our action get trigger when workersaga revieve an HELLO action
-function* workerSaga(){
-  console.log("Hello World I am here")
+// function* workerSaga(){
+//   console.log("Hello World I am here")
 
-  // --- put is used to dispatch further action and we can even console value of action despached with puts.
-  console.log(put({type: 'ANOTHER_ACTION'}))
-  yield put({type: 'ANOTHER_ACTION'})
+//   // --- put is used to dispatch further action and we can even console value of action despached with puts.
+//   console.log(put({type: 'ANOTHER_ACTION'}))
+//   yield put({type: 'ANOTHER_ACTION'})
+// }
+
+
+
+// recreate to work with product list
+function* rootSaga(){
+  yield takeEvery(PRODUCT.LOAD, fetchImageWorker)
 }
+
+function fetchImageWorker(){
+  console.log("fetching Image from server")
+}
+
+
 
 // --- Here another login watcher
 function* loginWacherSaga(){
