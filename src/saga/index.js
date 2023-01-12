@@ -1,5 +1,16 @@
-import {takeEvery, put, take, call } from 'redux-saga/effects'
-import { PRODUCT } from '../constants';
+import productSaga from './productsSaga'
+
+export default productSaga
+
+
+
+
+
+
+
+
+// import {takeEvery, put, take, call } from 'redux-saga/effects'
+// import { PRODUCT } from '../constants';
 
 // --- this is our wacher saga
 // function* rootSaga(){
@@ -17,39 +28,41 @@ import { PRODUCT } from '../constants';
 
 
 // recreate to work with product list
-function* rootSaga(){
-  yield takeEvery(PRODUCT.LOAD, fetchImageWorker)
-}
+// function* rootSaga(){
+//   yield takeEvery(PRODUCT.LOAD, fetchImageWorker)
+// }
 
-function fetchImageWorker(){
-  console.log("fetching Image from server")
-}
+// function fetchImageWorker(){
+//   console.log("fetching Image from server")
+// }
 
 
 
-// --- Here another login watcher
-function* loginWacherSaga(){
-  yield take('LOGIN');
-  yield call(loginWorkerSaga);
-  // yield take('ADD_CART')
-  // yield take('BUY')
-  yield take('LOGOUT');
-  yield call(logoutWorkerSaga)
-}
+// // --- Here another login watcher
+// function* loginWacherSaga(){
+//   yield take('LOGIN');
+//   yield call(loginWorkerSaga);
+//   // yield take('ADD_CART')
+//   // yield take('BUY')
+//   yield take('LOGOUT');
+//   yield call(logoutWorkerSaga)
+// }
 
-// --- Hear another worker for login
-function loginWorkerSaga(){
-  console.log("user is logeed in")
-}
+// // --- Hear another worker for login
+// function loginWorkerSaga(){
+//   console.log("user is logeed in")
+// }
 
-function logoutWorkerSaga(){
-  console.log("user is logged out")
-}
+// function logoutWorkerSaga(){
+//   console.log("user is logged out")
+// }
 
-export {rootSaga, loginWacherSaga};
+// export {rootSaga, loginWacherSaga};
 
 
 // takeEvery -> will trigger for every hit given by user (repeted action possible)
 // take -> Only handle one action if simontenous action are just same
 // put -> Used to dispatch a new action 
 // call -> is used in combination of take to specify that this this action only trigger then once.
+
+

@@ -1,5 +1,6 @@
 import { PRODUCT } from "../constants";
 
+
 // here we define our Action which is responsible for calling the reducer
 
 // Action for product loading
@@ -11,7 +12,8 @@ const productLoad = () => ({
 const productSucess = (product) => ({
     type: PRODUCT.LOAD_SUCESS,
     product
-})
+}
+)
 
 // Action for product loading error
 const productError = (error) => ({
